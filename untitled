@@ -1,0 +1,16 @@
+require 'sinatra'
+require 'pry'
+get '/groceries' do
+  @newsarticle = File.readlines('grocery_list.txt')
+  erb :index
+end
+
+post '/groceries' do
+	grocery = params['grocery']
+	# story = "#{title}, #{description}, #{url}"
+	file.open('grocery_list.txt', 'a') do |file|
+	  file.write(grocery)
+	end
+
+redirect '/articles'
+end
